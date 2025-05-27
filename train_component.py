@@ -3,14 +3,14 @@ from kfp import dsl
 from kfp.dsl import component, Input, Output, Dataset
 
 @component(
-    base_image="python:3.8",
+    base_image="python:3.10",
     packages_to_install=["pandas", "scikit-learn", "joblib"]
 )
 def train_model(
     dataset_input: Input[Dataset],
     model_output: Output[Dataset],
     model_name: str = "random_forest"
-):
+) -> None:
     import pandas as pd
     from sklearn.ensemble import RandomForestClassifier
     from sklearn.linear_model import LogisticRegression

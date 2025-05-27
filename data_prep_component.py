@@ -3,13 +3,17 @@ from kfp import dsl
 from kfp.dsl import component, Input, Output, Dataset
 
 @component(
-    base_image="python:3.8",
+    base_image="python:3.10",
     packages_to_install=["pandas", "scikit-learn"]
 )
 def prepare_data(dataset_output: Output[Dataset]):
     import pandas as pd
     from sklearn.datasets import load_iris
     from sklearn.model_selection import train_test_split
+    
+    # Ensure the output directory exists
+    import os
+    os.makedirs(dataset_output.path, exist_ok=True)
     
     # Load iris dataset
     iris = load_iris()
