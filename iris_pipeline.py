@@ -33,13 +33,14 @@ if __name__ == "__main__":
     )
     
     # Run pipeline
-    client = kfp.Client(host='http://localhost:58727')
+    client = kfp.Client(host='http://localhost:54519')
     experiment = client.create_experiment('iris-classification')
     
     run = client.create_run_from_pipeline_package(
         './simple_ml_pipeline.yaml',
         arguments={'model_type': 'random_forest'},
+        experiment_name ='iris-classification'
     )
     
     print(f"Pipeline submitted! Run ID: {run.run_id}")
-    print("Visit http://localhost:58727 to see the pipeline execution")
+    print("Visit http://localhost:54519 to see the pipeline execution")
