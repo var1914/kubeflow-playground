@@ -1,4 +1,4 @@
-# Kubeflow POC: Simple ML Pipeline
+# Kubeflow Playground: Simple ML Pipeline
 
 ## Prerequisites
 - Docker installed
